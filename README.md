@@ -1,7 +1,7 @@
 # resizer
 CLI tool for resizing images
 
-##### Get it
+##### Get
 ``` 
 go get github.com/artemnikitin/resizer   
 ``` 
