@@ -6,9 +6,9 @@ import (
 	"image"
 	"image/jpeg"
 	"image/png"
+	"io/ioutil"
 	"log"
 	"os"
-	"strings"
 
 	"github.com/nfnt/resize"
 )
@@ -32,18 +32,16 @@ func main() {
 
 	file, err := os.Open(*originalFile)
 	processError(err, "Can't open original file")
+	defer file.Close()
 
 	typ := getImageType(*originalFile)
 	switch typ {
 	case "jpg":
 		image := processJPEG(file)
-		resizeIt(image)
-	case "jpeg":
-		image := processJPEG(file)
-		resizeIt(image)
+		resizeIt(typ, image)
 	case "png":
 		image := processPNG(file)
-		resizeIt(image)
+		resizeIt(typ, image)
 	default:
 		fmt.Println("Only .jpg and .png are supported at the moment!")
 		os.Exit(1)
@@ -52,36 +50,40 @@ func main() {
 
 func processJPEG(file *os.File) image.Image {
 	image, err := jpeg.Decode(file)
-	processError(err, "Can't convert original file to Image")
-	file.Close()
+	processError(err, "Can't convert .jpeg file to Image")
 	return image
 }
 
 func processPNG(file *os.File) image.Image {
 	image, err := png.Decode(file)
-	processError(err, "Can't convert original file to Image")
-	file.Close()
+	processError(err, "Can't convert .png file to Image")
 	return image
 }
 
-func resizeIt(image image.Image) {
+func resizeIt(typ string, image image.Image) {
 	image = resize.Resize(*width, *height, image, resize.Lanczos3)
-	save(*saveTo, image)
+	save(typ, *saveTo, image)
 	fmt.Println("Resizing done!")
 }
 
 func getImageType(path string) string {
-	pos := strings.LastIndex(path, ".")
-	if pos == -1 {
-		log.Fatal("Can't find type of image")
+	bytes, err := ioutil.ReadFile(path)
+	processError(err, "Can't get content of file")
+	result := ""
+	if len(bytes) > 0 {
+		if bytes[0] == 0xFF && bytes[1] == 0xD8 {
+			result = "jpg"
+		}
+		if bytes[1] == 0x50 && bytes[2] == 0x4E && bytes[3] == 0x47 {
+			result = "png"
+		}
 	}
-	return path[pos+1:]
+	return result
 }
 
-func save(path string, image image.Image) {
+func save(typ, path string, image image.Image) {
 	file, err := os.Create(path)
 	processError(err, "Can't create file to save resized image")
-	typ := getImageType(path)
 	if typ == "png" {
 		png.Encode(file, image)
 	} else {
@@ -91,6 +93,6 @@ func save(path string, image image.Image) {
 
 func processError(err error, text string) {
 	if err != nil {
-		log.Fatal(text, err)
+		log.Fatal(text+" ", err)
 	}
 }
