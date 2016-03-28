@@ -11,6 +11,7 @@ import (
 	"os"
 
 	"github.com/nfnt/resize"
+	"io"
 )
 
 var (
@@ -48,13 +49,13 @@ func main() {
 	}
 }
 
-func processJPEG(file *os.File) image.Image {
+func processJPEG(file io.Reader) image.Image {
 	image, err := jpeg.Decode(file)
 	processError(err, "Can't convert .jpeg file to Image")
 	return image
 }
 
-func processPNG(file *os.File) image.Image {
+func processPNG(file io.Reader) image.Image {
 	image, err := png.Decode(file)
 	processError(err, "Can't convert .png file to Image")
 	return image
