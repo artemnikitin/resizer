@@ -14,4 +14,4 @@ Parameter `save` is optional, if it'll be skipped, then resized image will repla
 It's possible to specify only `w` or `h`, in this case another parameter will be calculated to save proportions of original image.
 
 ##### TODO  
-- Add more commands
+- Keep EXIF and other image metadata
