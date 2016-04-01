@@ -6,12 +6,12 @@ import (
 	"image"
 	"image/jpeg"
 	"image/png"
+	"io"
 	"io/ioutil"
 	"log"
 	"os"
 
 	"github.com/nfnt/resize"
-	"io"
 )
 
 var (
@@ -39,10 +39,10 @@ func main() {
 	switch typ {
 	case "jpg":
 		image := processJPEG(file)
-		resizeIt(typ, image)
+		resizeIt(typ, &image)
 	case "png":
 		image := processPNG(file)
-		resizeIt(typ, image)
+		resizeIt(typ, &image)
 	default:
 		fmt.Println("Only .jpg and .png are supported at the moment!")
 		os.Exit(1)
@@ -61,9 +61,9 @@ func processPNG(file io.Reader) image.Image {
 	return image
 }
 
-func resizeIt(typ string, image image.Image) {
-	image = resize.Resize(*width, *height, image, resize.Lanczos3)
-	save(typ, *saveTo, image)
+func resizeIt(typ string, image *image.Image) {
+	*image = resize.Resize(*width, *height, *image, resize.Lanczos3)
+	save(typ, *saveTo, *image)
 	fmt.Println("Resizing done!")
 }
 
