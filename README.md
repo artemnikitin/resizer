@@ -1,4 +1,5 @@
 # resizer
+[![Go Report Card](https://goreportcard.com/badge/artemnikitin/resizer)](https://goreportcard.com/report/artemnikitin/resizer)   
 CLI tool for resizing images
 
 ##### Get
