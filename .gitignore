@@ -29,3 +29,8 @@ _testmain.go
 # IDEA
 /.idea/
 *.iml
+
+*.bmp
+*.webp
+*.jpg
+*.png

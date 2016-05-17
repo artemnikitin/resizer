@@ -2,10 +2,23 @@
 	"version": 0,
 	"dependencies": [
 		{
+			"importpath": "github.com/chai2010/webp",
+			"repository": "https://github.com/chai2010/webp",
+			"revision": "dd526bdb977b38d44bf551e20a298c3d5e0cdff1",
+			"branch": "master"
+		},
+		{
 			"importpath": "github.com/nfnt/resize",
 			"repository": "https://github.com/nfnt/resize",
 			"revision": "4d93a29130b1b6aba503e2aa8b50f516213ea80e",
 			"branch": "master"
+		},
+		{
+			"importpath": "golang.org/x/image/bmp",
+			"repository": "https://go.googlesource.com/image",
+			"revision": "f551d3a6b7fc11df315ad9e18b404280680f8bec",
+			"branch": "master",
+			"path": "/bmp"
 		}
 	]
 }
