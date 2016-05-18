@@ -11,7 +11,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/chai2010/webp"
 	"github.com/nfnt/resize"
 	"golang.org/x/image/bmp"
 )
@@ -48,11 +47,11 @@ func main() {
 	case "bmp":
 		image := processBMP(file)
 		resizeIt(typ, &image)
-	case "webp":
+	/*case "webp":
 		image := processWEBP(file)
-		resizeIt(typ, &image)
+		resizeIt(typ, &image)*/
 	default:
-		fmt.Println("Can't get an image type. Only .jpg, .png, .bmp and .webp are supported at the moment!")
+		fmt.Println("Can't get an image type. Only .jpg, .png and .bmp are supported at the moment!")
 		os.Exit(1)
 	}
 }
@@ -75,11 +74,11 @@ func processBMP(file io.Reader) image.Image {
 	return image
 }
 
-func processWEBP(file io.Reader) image.Image {
+/*func processWEBP(file io.Reader) image.Image {
 	image, err := webp.Decode(file)
 	processError(err, "Can't convert .webp file to Image")
 	return image
-}
+}*/
 
 func resizeIt(typ string, image *image.Image) {
 	*image = resize.Resize(*width, *height, *image, resize.Lanczos3)
@@ -101,9 +100,9 @@ func getImageType(path string) string {
 		if bytes[0] == 0x42 && bytes[1] == 0x4D {
 			result = "bmp"
 		}
-		if bytes[0] == 0x52 && bytes[1] == 0x49 && bytes[2] == 0x46 && bytes[3] == 0x46 {
+		/*if bytes[0] == 0x52 && bytes[1] == 0x49 && bytes[2] == 0x46 && bytes[3] == 0x46 {
 			result = "webp"
-		}
+		}*/
 	}
 	return result
 }
@@ -118,8 +117,8 @@ func save(typ, path string, image image.Image) {
 		png.Encode(file, image)
 	case "bmp":
 		bmp.Encode(file, image)
-	case "webp":
-		webp.Encode(file, image, nil)
+	/*case "webp":
+		webp.Encode(file, image, nil)*/
 	}
 }
 

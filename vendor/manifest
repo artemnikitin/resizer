@@ -2,12 +2,6 @@
 	"version": 0,
 	"dependencies": [
 		{
-			"importpath": "github.com/chai2010/webp",
-			"repository": "https://github.com/chai2010/webp",
-			"revision": "dd526bdb977b38d44bf551e20a298c3d5e0cdff1",
-			"branch": "master"
-		},
-		{
 			"importpath": "github.com/nfnt/resize",
 			"repository": "https://github.com/nfnt/resize",
 			"revision": "4d93a29130b1b6aba503e2aa8b50f516213ea80e",
