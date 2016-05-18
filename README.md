@@ -7,7 +7,6 @@ Supported image formats:
 .bmp
 .jpg
 .png
-.webp
 ```
 
 ##### Get
