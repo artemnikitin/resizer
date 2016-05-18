@@ -2,10 +2,19 @@
 [![Go Report Card](https://goreportcard.com/badge/artemnikitin/resizer)](https://goreportcard.com/report/artemnikitin/resizer)   
 CLI tool for resizing images
 
+Supported image formats:
+```
+.bmp
+.jpg
+.png
+.webp
+```
+
 ##### Get
 ``` 
 go get github.com/artemnikitin/resizer   
 ``` 
+Or you can just download a binary from release.
 
 ##### Run
 ```
