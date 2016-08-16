@@ -1,5 +1,5 @@
 # resizer
-[![Go Report Card](https://goreportcard.com/badge/artemnikitin/resizer)](https://goreportcard.com/report/artemnikitin/resizer)   [![codebeat badge](https://codebeat.co/badges/a7b8b098-eca8-430f-9710-5acdced1d21b)](https://codebeat.co/projects/github-com-artemnikitin-resizer)    
+[![Go Report Card](https://goreportcard.com/badge/artemnikitin/resizer)](https://goreportcard.com/report/artemnikitin/resizer)   [![codebeat badge](https://codebeat.co/badges/a7b8b098-eca8-430f-9710-5acdced1d21b)](https://codebeat.co/projects/github-com-artemnikitin-resizer)    [![Build Status](https://travis-ci.org/artemnikitin/resizer.svg?branch=master)](https://travis-ci.org/artemnikitin/resizer)    
 CLI tool for resizing images   
 
 Supported image formats:
