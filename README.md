@@ -1,6 +1,6 @@
 # resizer
-[![Go Report Card](https://goreportcard.com/badge/artemnikitin/resizer)](https://goreportcard.com/report/artemnikitin/resizer)   
-CLI tool for resizing images
+[![Go Report Card](https://goreportcard.com/badge/artemnikitin/resizer)](https://goreportcard.com/report/artemnikitin/resizer)   [![codebeat badge](https://codebeat.co/badges/a7b8b098-eca8-430f-9710-5acdced1d21b)](https://codebeat.co/projects/github-com-artemnikitin-resizer)    
+CLI tool for resizing images   
 
 Supported image formats:
 ```
@@ -9,13 +9,13 @@ Supported image formats:
 .png
 ```
 
-##### Get
+#### Get
 ``` 
 go get github.com/artemnikitin/resizer   
 ``` 
 Or you can just download a binary from release.
 
-##### Run
+#### Run
 ```
 resizer -file /path/to/my/image.png -save /path/to/save/resized/image.png -w 122 -h 343
 ```
